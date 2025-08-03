@@ -1,0 +1,123 @@
+body {
+    background-color: #DECBC6;
+}
+
+.habit-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+
+
+.habit-card {
+  flex: 0 0 calc((100% / 3) - 10.66px);
+  box-sizing: border-box; 
+  margin: 0;
+  border: 2px solid #9A8C98;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  background-color: #F2E9E4;
+}
+
+.habit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.habit-title {
+    margin: 0;
+    color: #333;
+    font-size: 20px;
+}
+
+.habit-category {
+    background-color: #4A4E69;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.habit-body {
+    margin-bottom: 24px;
+}
+
+.streak-info {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.streak-number {
+    font-size: 48px;
+    font-weight: bold;
+    color: #4A4E69;
+}
+
+.streak-label {
+    color: #000;
+    font-size: 16px;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #4A4E69;
+    transition: width 0.3s ease;
+}
+
+.habit-time {
+    color: #000;
+    font-size: 14px;
+    margin: 0;
+}
+
+.habit-footer {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-complete, .btn-skip {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-complete {
+    background-color: #4A4E69;
+    color: white;
+}
+
+.btn-complete:hover {
+    background-color: #22223B;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
+}
+
+.btn-skip {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+.btn-skip:hover {
+    background-color: #e0e0e0;
+}

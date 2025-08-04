@@ -20,6 +20,7 @@ body {
   margin: 16px 0;
   background-color: #F2E9E4;
   overflow: visible;
+  height: 350px;
 }
 
 .habit-header {
@@ -105,6 +106,8 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s ease;
+    position: relative;
+    top: 20px;
 }
 
 .btn-complete {
@@ -205,4 +208,39 @@ body {
   background-color: #22223B;
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(34, 34, 59, 0.3);
+}
+
+.habit-history {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+.btn-show-history {
+  background-color: #005D8F;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  /* position: relative;
+  top: 20px; */
+    margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.btn-show-history:hover {
+  background-color: #003049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.btn-show-history:active {
+  background-color: #002035;
+  transform: translateY(0);
+  box-shadow: none;
+  /* margin-bottom: 48px; */
 }

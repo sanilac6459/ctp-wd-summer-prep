@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('habit-form');
   const container = document.querySelector('.habit-container');
 
-  loadHabits(); // load saved habits from localStorage
+  loadHabits();
   renderHabits(container);
 
   form.addEventListener('submit', (e) => {
@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const category = document.getElementById('habit-category').value.trim();
     const target = parseInt(document.getElementById('habit-target').value);
 
+    // habit object
     if (name && category && target > 0) {
       addHabit({
       id: Date.now(),
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// load habits from localStorage
 function loadHabits() {
   const saved = localStorage.getItem('habits');
   habits = saved ? JSON.parse(saved) : [];
@@ -45,10 +47,12 @@ function loadHabits() {
   });
 }
 
+// save habits to localStorage
 function saveHabits() {
   localStorage.setItem('habits', JSON.stringify(habits));
 }
 
+//
 function renderHabits(container) {
   container.innerHTML = '';
   habits.forEach(habit => {
@@ -56,6 +60,7 @@ function renderHabits(container) {
   });
 }
 
+// generate habit cards as user add them
 function createHabitCard(habit) {
   const card = document.createElement('div');
   card.className = 'habit-card';
@@ -95,6 +100,7 @@ function createHabitCard(habit) {
   </div>
 `;
 
+  // handles "Show History" button
   const toggleBtn = card.querySelector('.btn-show-history');
   const historyDiv = card.querySelector('.habit-history');
 
@@ -108,16 +114,20 @@ function createHabitCard(habit) {
     }
   });
 
+  // event listener for "Mark Complete" button
   card.querySelector('.btn-complete').addEventListener('click', () => {
     markHabitComplete(habit);
   });
 
+  // event listener for "Skip Today" button
   card.querySelector('.btn-skip').addEventListener('click', () => {
     skipHabitToday(habit);
   });
 
+  // event listener for "Edit" button
   card.querySelector('.btn-edit').onclick = () => editHabit(habit.id);
 
+  // event listener for trash icon
   card.querySelector('.delete-icon').onclick = () => {
     if (confirm(`Are you sure you want to delete ${habit.name}? This action can't be undone.`)) {
       card.remove();
@@ -128,104 +138,17 @@ function createHabitCard(habit) {
   return card;
 }
 
-
-// function createHabitCard(habit) {
-//   const card = document.createElement('div');
-//   card.className = 'habit-card';
-//   card.dataset.id = habit.id;
-
-//   const progressPercent = habit.target ? Math.min((habit.streak / habit.target) * 100, 100) : 0;
-//   const lastCompletedText = habit.lastCompleted ? `Last completed: ${habit.lastCompleted}` : 'Last completed: Never';
-
-//   card.innerHTML = `
-//   <div class="delete-icon" title="Delete Habit">
-//     <img src="images/trash-can-icon.png" alt="Delete" />
-//   </div>
-//   <div class="habit-header">
-//     <h3 class="habit-title">${habit.name}</h3>
-//     <div class="right-side">
-//       <span class="habit-category">${habit.category}</span>
-//       <button class="btn-edit">Edit</button>
-//     </div>
-//   </div>
-//   <div class="habit-body">
-//     <div class="streak-info">
-//       <span class="streak-number">${habit.streak}</span>
-//       <span class="streak-label">day(s) streak</span>
-//     </div>
-//     <div class="progress-bar">
-//       <div class="progress-fill" style="width: ${progressPercent}%"></div>
-//     </div>
-//     <p class="habit-time">${lastCompletedText}</p>
-//     <p class="habit-history">Completed on: ${habit.completions?.join(', ') || 'None yet'}</p>
-//   </div>
-//   <div class="habit-footer">
-//     <button class="btn-complete">Mark Complete</button>
-//     <button class="btn-skip">Skip Today</button>
-//   </div>
-// `;
-//   card.querySelector('.btn-complete').addEventListener('click', () => {
-//   markHabitComplete(habit);
-// });
-
-// card.querySelector('.btn-skip').addEventListener('click', () => {
-//   skipHabitToday(habit);
-// });
-//   card.querySelector('.btn-edit').onclick = () => editHabit(habit.id);
-//   card.querySelector('.delete-icon').onclick = () => {
-//   if (confirm(`Are you sure you want to delete ${habit.name}? This action can't be undone.`)) {
-//     card.remove();
-//     deleteHabit(habit.id);
-//   }
-// };
-
-//   return card;
-// }
-
-// function addEventListeners() {
-//   const container = document.querySelector('.habit-container');
-
-//   // Add event listeners to all current cards
-//   container.querySelectorAll('.habit-card').forEach(card => {
-//     const id = Number(card.dataset.id);
-//     const habit = habits.find(h => h.id === id);
-
-//     if (!habit) {
-//       return;
-//     }
-
-
-//     card.querySelector('.delete-icon').onclick = () => {
-//       if (confirm(`Are you sure you want to delete ${habit.name}? This action can't be undone.`)) {
-//         deleteHabit(habit.id);
-//       }
-//     };
-
-
-//     card.querySelector('.btn-edit').onclick = () => {
-//       editHabit(habit.id);
-//     };
-
-
-//     card.querySelector('.btn-complete').onclick = () => {
-//       markHabitComplete(habit.id);
-//     };
-
-   
-//     card.querySelector('.btn-skip').onclick = () => {
-//       skipHabitToday(habit.id);
-//     };
-//   });
-// }
-
+// adding habit form functionality
 function addHabit(habit) {
   habits.push(habit);
   saveHabits();
 }
 
+// mark complete button functionality
 function markHabitComplete(habit) {
   const today = new Date().toISOString().split('T')[0];
 
+  // PREVENT USER FROM SPAMMING, ACCURATELY MARKS COMPLETE FOR TODAY
   // if (habit.lastCompleted === today) {
   //   alert("You already completed this!");
   //   return;
@@ -240,6 +163,7 @@ function markHabitComplete(habit) {
   habit.streak += 1;
   habit.skippedDate = null;
 
+  // calculated streaks
   if (!habit.completions.includes(today)) {
     habit.completions.push(today);
   }
@@ -253,7 +177,7 @@ function markHabitComplete(habit) {
   addEventListeners();
 }
 
-
+// trash icon functionality
 function deleteHabit(id) {
   const habit = habits.find(h => h.id === id);
   if (!habit) {
@@ -265,6 +189,7 @@ function deleteHabit(id) {
   addEventListeners();
 }
 
+// edit habit and catgeory functionality
 function editHabit(id) {
   const habit = habits.find(h => h.id === id);
   if (!habit) {
@@ -286,6 +211,7 @@ function editHabit(id) {
   renderHabits(document.querySelector('.habit-container'));
 }
 
+// skip button functionality
 function skipHabitToday(habit) {
   const today = new Date().toISOString().split('T')[0];
 
@@ -293,6 +219,7 @@ function skipHabitToday(habit) {
     return;
   }
 
+  // PREVENT USER FROM SPAMMING, ACCURATELY SKIPS FOR TODAY
   // if (habit.skippedDate === today) {
   //   alert("You already skipped this today!");
   //   return;
@@ -303,7 +230,6 @@ function skipHabitToday(habit) {
   //   return;
   // }
 
-  habit.streak = 0;
   habit.skippedDate = today;
   habit.lastCompleted = null;
 

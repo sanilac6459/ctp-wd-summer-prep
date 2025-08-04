@@ -2,6 +2,10 @@ body {
     background-color: #D8C4C0;
 }
 
+h1 {
+  color: #363852;
+}
+
 .habit-container {
   display: flex;
   flex-wrap: wrap;
@@ -74,7 +78,7 @@ body {
 
 .progress-bar {
     height: 8px;
-    background-color: #e0e0e0;
+    background-color: #D4C5C4;
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 12px;
@@ -123,13 +127,13 @@ body {
 }
 
 .btn-skip {
-    background-color: #f0f0f0;
+    background-color: #8C7D89;
     /* border: 2px solid #666; */
-    color: #666;
+    color: white;
 }
 
 .btn-skip:hover {
-    background-color: #e0e0e0;
+    background-color: #827380;
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(34, 34, 59, 0.3);
 }
@@ -217,7 +221,7 @@ body {
 }
 
 .btn-show-history {
-  background-color: #005D8F;
+  background-color: #726D81;
   color: white;
   border: none;
   padding: 8px 14px;
@@ -233,13 +237,13 @@ body {
 }
 
 .btn-show-history:hover {
-  background-color: #003049;
+  background-color: #5E5E75;
   transform: translateY(-2px);
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
 .btn-show-history:active {
-  background-color: #002035;
+  background-color: #4A4E69;
   transform: translateY(0);
   box-shadow: none;
   /* margin-bottom: 48px; */

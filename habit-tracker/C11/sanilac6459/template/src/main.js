@@ -52,7 +52,7 @@ function saveHabits() {
   localStorage.setItem('habits', JSON.stringify(habits));
 }
 
-//
+// rendering habit cards
 function renderHabits(container) {
   container.innerHTML = '';
   habits.forEach(habit => {
@@ -114,20 +114,20 @@ function createHabitCard(habit) {
     }
   });
 
-  // event listener for "Mark Complete" button
+  // handles "Mark Complete" button
   card.querySelector('.btn-complete').addEventListener('click', () => {
     markHabitComplete(habit);
   });
 
-  // event listener for "Skip Today" button
+  // handles"Skip Today" button
   card.querySelector('.btn-skip').addEventListener('click', () => {
     skipHabitToday(habit);
   });
 
-  // event listener for "Edit" button
+  // handles "Edit" button
   card.querySelector('.btn-edit').onclick = () => editHabit(habit.id);
 
-  // event listener for trash icon
+  // handles trash icon
   card.querySelector('.delete-icon').onclick = () => {
     if (confirm(`Are you sure you want to delete ${habit.name}? This action can't be undone.`)) {
       card.remove();

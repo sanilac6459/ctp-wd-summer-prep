@@ -1,9 +1,9 @@
 body {
-    background-color: #D8C4C0;
+    background-color: #CCB7AE;
 }
 
 h1 {
-  color: #363852;
+  color: #673C62;
 }
 
 .habit-container {
@@ -18,11 +18,11 @@ h1 {
   flex: 0 0 calc((100% / 3) - 10.66px);
   box-sizing: border-box; 
   margin: 0;
-  border: 3px solid #4A4E69;
+  border: 3px solid #70587C;
   border-radius: 8px;
   padding: 16px;
   margin: 16px 0;
-  background-color: #F2E9E4;
+  background-color: #D6CFCB;
   overflow: visible;
   height: 350px;
 }
@@ -43,7 +43,7 @@ h1 {
 }
 
 .habit-category {
-    background-color: #4A4E69;
+    background-color: #5A3B5A;
     color: white;
     padding: 8px 12px;
     border-radius: 20px;
@@ -68,7 +68,7 @@ h1 {
 .streak-number {
     font-size: 48px;
     font-weight: bold;
-    color: #4A4E69;
+    color: #70587C;
 }
 
 .streak-label {
@@ -78,7 +78,7 @@ h1 {
 
 .progress-bar {
     height: 8px;
-    background-color: #D4C5C4;
+    background-color: #B7ABA4;
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 12px;
@@ -86,7 +86,7 @@ h1 {
 
 .progress-fill {
     height: 100%;
-    background-color: #4A4E69;
+    background-color: #876E87;
     transition: width 0.3s ease;
 }
 
@@ -115,19 +115,19 @@ h1 {
 }
 
 .btn-complete {
-    background-color: #4A4E69;
+    background-color: #785D83;
     /* border: 2px solid #22223B; */
     color: white;
 }
 
 .btn-complete:hover {
-    background-color: #22223B;
+    background-color: #5A3B5A;
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(34, 34, 59, 0.3);
 }
 
 .btn-skip {
-    background-color: #8C7D89;
+    background-color: #9B8299;
     /* border: 2px solid #666; */
     color: white;
 }
@@ -152,7 +152,7 @@ h1 {
 }
 
 .btn-edit {
-  background-color: #8C7D89;
+  background-color: #876E87;
   color: white;
   position: relative;
   padding: 10px 16px;
@@ -175,7 +175,7 @@ h1 {
   right: -18px;
   width: 40px;
   height: 40px;
-  background-color: #4A4E69;
+  background-color: #70587C;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -196,7 +196,7 @@ h1 {
 }
 
 .btn-add {
-  background-color: #4A4E69;
+  background-color: #673C62;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -209,7 +209,7 @@ h1 {
 }
 
 .btn-add:hover {
-  background-color: #22223B;
+  background-color: #5A3B5A;
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(34, 34, 59, 0.3);
 }
@@ -221,7 +221,7 @@ h1 {
 }
 
 .btn-show-history {
-  background-color: #726D81;
+  background-color: #785D83;
   color: white;
   border: none;
   padding: 8px 14px;
@@ -237,13 +237,13 @@ h1 {
 }
 
 .btn-show-history:hover {
-  background-color: #5E5E75;
+  background-color: #5A3B5A;
   transform: translateY(-2px);
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
 .btn-show-history:active {
-  background-color: #4A4E69;
+  background-color: #5A3B5A;
   transform: translateY(0);
   box-shadow: none;
   /* margin-bottom: 48px; */

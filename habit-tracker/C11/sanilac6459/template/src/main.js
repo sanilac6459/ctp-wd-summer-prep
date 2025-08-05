@@ -15,20 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // habit object
     if (name && category && target > 0) {
-      addHabit({
-      id: Date.now(),
-      name,
-      category,
-      target,
-      streak: 0,
-      longestStreak: 0,
-      completions: [],
-      lastCompleted: null,
-      skippedDate: null
-    });
-      form.reset();
-      renderHabits(container);
-      saveHabits();
+        addHabit({
+        id: Date.now(),
+        name,
+        category,
+        target,
+        streak: 0,
+        longestStreak: 0,
+        completions: [],
+        lastCompleted: null,
+        skippedDate: null
+      });
+        form.reset();
+        renderHabits(container);
+        saveHabits();
     } 
     else {
       alert('Please fill in all fields correctly.');

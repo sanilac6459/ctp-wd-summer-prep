@@ -1,9 +1,9 @@
 body {
-    background-color: #CCB7AE;
+    background-color: #E2CFCA;
 }
 
 h1 {
-  color: #673C62;
+  color: #6D2E46;
 }
 
 .habit-container {
@@ -18,11 +18,11 @@ h1 {
   flex: 0 0 calc((100% / 3) - 10.66px);
   box-sizing: border-box; 
   margin: 0;
-  border: 3px solid #70587C;
+  border: 3px solid #6D2E46;
   border-radius: 8px;
   padding: 16px;
   margin: 16px 0;
-  background-color: #D6CFCB;
+  background-color: #D7C4C1;
   overflow: visible;
   height: 350px;
 }
@@ -36,14 +36,14 @@ h1 {
 
 .habit-title {
     margin: 0;
-    color: #333;
+    color: #6D2E46;
     font-size: 20px;
     position: relative;
     top: 10px;
 }
 
 .habit-category {
-    background-color: #5A3B5A;
+    background-color: #6D2E46;
     color: white;
     padding: 8px 12px;
     border-radius: 20px;
@@ -68,7 +68,7 @@ h1 {
 .streak-number {
     font-size: 48px;
     font-weight: bold;
-    color: #70587C;
+    color: #6D2E46;
 }
 
 .streak-label {
@@ -86,7 +86,7 @@ h1 {
 
 .progress-fill {
     height: 100%;
-    background-color: #876E87;
+    background-color: #6D2E46;
     transition: width 0.3s ease;
 }
 
@@ -115,25 +115,26 @@ h1 {
 }
 
 .btn-complete {
-    background-color: #785D83;
+    background-color: #72384A;
     /* border: 2px solid #22223B; */
     color: white;
 }
 
 .btn-complete:hover {
-    background-color: #5A3B5A;
+    background-color: #6D2E46;
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(34, 34, 59, 0.3);
 }
 
 .btn-skip {
-    background-color: #9B8299;
+    background-color: #88555E;
     /* border: 2px solid #666; */
     color: white;
 }
 
 .btn-skip:hover {
     background-color: #827380;
+    color: white;
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(34, 34, 59, 0.3);
 }
@@ -152,7 +153,7 @@ h1 {
 }
 
 .btn-edit {
-  background-color: #876E87;
+  background-color: #854B5A;
   color: white;
   position: relative;
   padding: 10px 16px;
@@ -175,7 +176,7 @@ h1 {
   right: -18px;
   width: 40px;
   height: 40px;
-  background-color: #70587C;
+  background-color: #6D2E46;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -196,7 +197,7 @@ h1 {
 }
 
 .btn-add {
-  background-color: #673C62;
+  background-color: #6D2E46;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -221,7 +222,7 @@ h1 {
 }
 
 .btn-show-history {
-  background-color: #785D83;
+  background-color: #88555E;
   color: white;
   border: none;
   padding: 8px 14px;
@@ -237,7 +238,7 @@ h1 {
 }
 
 .btn-show-history:hover {
-  background-color: #5A3B5A;
+  background-color: #76414D;
   transform: translateY(-2px);
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }

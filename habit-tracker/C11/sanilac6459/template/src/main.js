@@ -10,15 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('habit-name').value.trim();
-    const category = document.getElementById('habit-category').value.trim();
     const target = parseInt(document.getElementById('habit-target').value);
 
     // habit object
-    if (name && category && target > 0) {
+    if (name && target > 0) {
         addHabit({
         id: Date.now(),
         name,
-        category,
         target,
         streak: 0,
         longestStreak: 0,
@@ -85,7 +83,7 @@ function createHabitCard(habit) {
     <div class="habit-header">
       <h3 class="habit-title">${habit.name}</h3>
       <div class="right-side">
-        <span class="habit-category">${habit.category}</span>
+      
         <button class="btn-edit">Edit</button>
       </div>
     </div>
@@ -99,9 +97,6 @@ function createHabitCard(habit) {
       </div>
       <p class="habit-time">${lastCompletedText}</p>
       <button class="btn-show-history">Show History</button>
-      <div class="habit-history" style="display: none; margin-top: 8px; font-size: 13px; color: #333;">
-        ${formattedCompletions}
-      </div>
     </div>
     <div class="habit-footer">
       <button class="btn-complete">Mark Complete</button>
@@ -114,14 +109,14 @@ function createHabitCard(habit) {
   const historyDiv = card.querySelector('.habit-history');
 
   toggleBtn.addEventListener('click', () => {
-    if (historyDiv.style.display === 'none') {
-      historyDiv.style.display = 'block';
-      toggleBtn.textContent = 'Hide History';
-    } else {
-      historyDiv.style.display = 'none';
-      toggleBtn.textContent = 'Show History';
+    if (habit.completions && habit.completions.length > 0) {
+      const formattedDates = habit.completions.map(formatDate).join(', ');
+      alert(`Here's the completion history of ${habit.name}:\n${formattedDates}`);
+    } 
+    else {
+      alert(`There's no completion history for ${habit.name}.`);
     }
-  });
+});
 
    // event listeners for "Mark Complete" button
   card.querySelector('.btn-complete').addEventListener('click', () => {
@@ -157,16 +152,16 @@ function addHabit(habit) {
 function markHabitComplete(habit) {
   const today = getLocalDateString();
 
-  // PREVENT USER FROM SPAMMING, ACCURATELY MARKS COMPLETE FOR TODAY
-  // if (habit.lastCompleted === today) {
-  //   alert("You already completed this!");
-  //   return;
-  // }
+  // ensure user can only click "Mark Complete" or "Skip Today" button once
+  if (habit.lastCompleted === today) {
+    alert("Whoops! Seems like you already completed this today!");
+    return;
+  }
 
-  // if (habit.skippedDate === today) {
-  //   alert("You already skipped this today!");
-  //   return;
-  // }
+  if (habit.skippedDate === today) {
+    alert("Whoops! Seems like you skipped this today!");
+    return;
+  }
 
   habit.lastCompleted = today;
   habit.streak += 1;
@@ -206,14 +201,19 @@ function editHabit(id) {
   }
 
   const newName = prompt('Edit habit name:', habit.name);
-  const newCategory = prompt('Edit habit category:', habit.category);
 
   if (newName !== null && newName !== '') {
     habit.name = newName;
   }
 
-  if (newCategory !== null && newCategory !== '') {
-    habit.category = newCategory;
+  const newTargetStr = prompt('Edit target streak (positive number):', habit.target);
+  if (newTargetStr !== null) {
+    const newTarget = parseInt(newTargetStr, 10);
+    if (!isNaN(newTarget) && newTarget > 0) {
+      habit.target = newTarget;
+    } else {
+      alert('Invalid target streak. It must be a positive number.');
+    }
   }
 
   saveHabits();
@@ -227,17 +227,17 @@ function skipHabitToday(habit) {
   if (!confirm(`Are you sure you want to skip ${habit.name}?`)) {
     return;
   }
+  
+  // ensure user can only click "Mark Complete" or "Skip Today" button once
+  if (habit.skippedDate === today) {
+    alert("Whoops! Seems like you already skipped this today!");
+    return;
+  }
 
-  // PREVENT USER FROM SPAMMING, ACCURATELY SKIPS FOR TODAY
-  // if (habit.skippedDate === today) {
-  //   alert("You already skipped this today!");
-  //   return;
-  // }
-
-  // if (habit.lastCompleted === today) {
-  //   alert("You already completed this!");
-  //   return;
-  // }
+  if (habit.lastCompleted === today) {
+    alert("Whoops! Seems like you already completed this today!");
+    return;
+  }
 
   habit.skippedDate = today;
   habit.lastCompleted = today;
@@ -262,8 +262,8 @@ function formatDate(dateStr) {
 // get the current date
 function getLocalDateString() {
   const d = new Date();
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  const yy = String(d.getFullYear()).slice(-2);
+  return `${mm}/${dd}/${yy}`;
 }

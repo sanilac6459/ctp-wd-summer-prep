@@ -186,7 +186,7 @@ h1 {
 }
 
 .delete-icon:hover {
-  background-color: #22223B;
+  background-color: #652A41;
 }
 
 
@@ -210,7 +210,7 @@ h1 {
 }
 
 .btn-add:hover {
-  background-color: #5A3B5A;
+  background-color: #652A41;
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(34, 34, 59, 0.3);
 }

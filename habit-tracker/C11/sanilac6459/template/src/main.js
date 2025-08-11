@@ -178,7 +178,6 @@ function markHabitComplete(habit) {
 
   saveHabits();
   renderHabits(document.querySelector('.habit-container'));
-  addEventListeners();
 }
 
 // trash icon functionality
@@ -190,7 +189,6 @@ function deleteHabit(id) {
   habits = habits.filter(h => h.id !== id);
   saveHabits();
   renderHabits(document.querySelector('.habit-container'));
-  addEventListeners();
 }
 
 // edit habit and catgeory functionality
@@ -244,7 +242,6 @@ function skipHabitToday(habit) {
 
   saveHabits();
   renderHabits(document.querySelector('.habit-container'));
-  addEventListeners();
 }
 
 // date format "MM-DD-YY"
